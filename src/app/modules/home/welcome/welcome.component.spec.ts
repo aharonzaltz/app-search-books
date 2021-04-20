@@ -4,6 +4,10 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { WelcomeScreenComponent } from './welcome.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { StoreDataService } from 'src/app/infrastructure/state-services/get-data.service';
 
 describe('WelcomeScreenComponent', () => {
   let component: WelcomeScreenComponent;
@@ -11,7 +15,9 @@ describe('WelcomeScreenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WelcomeScreenComponent ]
+      declarations: [ WelcomeScreenComponent ],
+      imports: [RouterTestingModule, ReactiveFormsModule ],
+      providers: [StoreDataService, StoreModule.forRoot({})]
     })
     .compileComponents();
   }));

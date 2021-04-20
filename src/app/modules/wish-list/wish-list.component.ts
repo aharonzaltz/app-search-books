@@ -17,15 +17,7 @@ export class WishListComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.initUserName();
-    this.initWishList();
-  }
-
-  initUserName() {
     this.userName$ = this.storeDataService.getUserName();
-  }
-
-  initWishList(){
     this.wishList$ = this.storeDataService.getWishList();
   }
 

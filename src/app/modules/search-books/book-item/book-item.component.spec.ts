@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { StoreModule } from '@ngrx/store';
+import { StoreDataService } from 'src/app/infrastructure/state-services/get-data.service';
 
 import { BookItemComponent } from './book-item.component';
 
@@ -8,7 +10,8 @@ describe('BookItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookItemComponent ]
+      declarations: [ BookItemComponent ],
+      providers: [StoreDataService, StoreModule.forRoot({})]
     })
     .compileComponents();
   });

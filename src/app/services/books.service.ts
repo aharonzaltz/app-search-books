@@ -17,7 +17,7 @@ export class BooksService {
      ) {
   }
 
-  searchBookAndGetTotalItems(keyWords: string, startIndex = 0): Observable<number> {
+  searchBooks(keyWords: string, startIndex = 0): Observable<number> {
     if (!keyWords){
       this.setDataService.setBooks([]);
       return of(0);

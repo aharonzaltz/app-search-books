@@ -6,6 +6,8 @@ import { DebugElement } from '@angular/core';
 import { BookDetailsComponent } from './book-details.component';
 import { of } from 'rxjs';
 import { IBook } from 'src/app/interfaces/books';
+import { StoreModule } from '@ngrx/store';
+import { StoreDataService } from 'src/app/infrastructure/state-services/get-data.service';
 
 describe('BookDetailsComponent', () => {
   let component: BookDetailsComponent;
@@ -13,7 +15,8 @@ describe('BookDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BookDetailsComponent ]
+      declarations: [ BookDetailsComponent ],
+      providers: [StoreDataService, StoreModule.forRoot({})]
     })
     .compileComponents();
   }));

@@ -4,6 +4,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { WishListComponent } from './wish-list.component';
+import { StoreDataService } from 'src/app/infrastructure/state-services/get-data.service';
+import { StateObservable, Store, StoreModule } from '@ngrx/store';
 
 describe('WishListComponent', () => {
   let component: WishListComponent;
@@ -11,7 +13,8 @@ describe('WishListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WishListComponent ]
+      declarations: [ WishListComponent ],
+      providers: [StoreDataService, StoreModule.forRoot({})]
     })
     .compileComponents();
   }));

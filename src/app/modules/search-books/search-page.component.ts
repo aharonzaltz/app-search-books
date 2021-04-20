@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BooksService } from '../../services/books.service';
 import { debounceTime, map, skipWhile, switchMap } from 'rxjs/operators'
 import { IPaginationEvent } from 'src/app/interfaces/pagination-event';
-import { fromEvent, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, fromEvent, Observable, Subject } from 'rxjs';
 import { IBook } from 'src/app/interfaces/books';
 import { StoreDataService } from 'src/app/infrastructure/state-services/get-data.service';
 
@@ -17,7 +17,7 @@ export class SearchPageComponent implements OnInit {
   booksList$: Observable<IBook[]>;
   totalItems$: Observable<number>;
   textSearched: string;
-
+  private obs = new BehaviorSubject<number>(0);
 
   constructor(
     private booksService: BooksService,
@@ -25,32 +25,29 @@ export class SearchPageComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.initUserName();
-    this.initBookList();
+    this.userName$ = this.storeDataService.getUserName();
+    this.booksList$ = this.storeDataService.getBookList();
   }
 
   ngAfterViewInit() {
-    this.totalItems$ = fromEvent(this.input.nativeElement, 'keyup')
-      .pipe(
+    this.totalItems$ = 
+    combineLatest(
+      fromEvent(this.input.nativeElement, 'keyup').pipe(
         debounceTime(1000),
-        skipWhile((val: KeyboardEvent) => !(<any>val.target).value),
-        map((val: KeyboardEvent) => (<any>val.target).value),
-        switchMap((serachText: string) => this.booksService.searchBookAndGetTotalItems(serachText))
+      ),
+      this.obs.asObservable()
+    )
+      .pipe(
+        skipWhile(([val, pageNumber]: [KeyboardEvent, number]) => !(<any>val.target).value),
+        map(([val, pageNumber]) => [(<any>val.target).value, pageNumber]),
+        switchMap(([serachText, pageNumber]) => this.booksService.searchBooks(serachText, pageNumber))
       )
   }
 
   trackByIdentity(index: number, item: any){ item };
 
-  initUserName() {
-    this.userName$ = this.storeDataService.getUserName();
-  }
-
-  initBookList() {
-    this.booksList$ = this.storeDataService.getBookList();
-  }
-
-  onPageChange(event: IPaginationEvent, textToSearch: string) {
-    this.totalItems$ = this.booksService.searchBookAndGetTotalItems(textToSearch, event.first);
+  onPageChange(event: IPaginationEvent) {
+    this.obs.next(event.first);
   }
 
 }

@@ -1,5 +1,5 @@
 <div *ngIf="selectedBook$ |async as currentBook">
-  <p-dialog [header]="currentBook.title"
+  <p-dialog (onHide)="onHide()" [header]="currentBook.title"
   [(visible)]="selectedBook">
     <div class="field label">
       {{currentBook.subtitle || 'no subtitle'}}

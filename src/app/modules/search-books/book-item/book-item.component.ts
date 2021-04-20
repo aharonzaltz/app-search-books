@@ -14,8 +14,8 @@ export class BookItemComponent {
     private setDataService: SetDataService,
   ) { }
 
-  onItemClicked(currentBook: IBook) {
-    this.setDataService.setCurrentBook(currentBook);
+  onItemClicked() {
+    this.setDataService.setCurrentBook(this.book);
   }
 
   onWishIconClicked(event: Event, book: IBook) {

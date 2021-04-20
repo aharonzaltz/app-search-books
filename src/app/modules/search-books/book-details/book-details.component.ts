@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { IBook } from 'src/app/interfaces/books';
 import { StoreDataService } from 'src/app/infrastructure/state-services/get-data.service';
 import { tap } from 'rxjs/operators';
+import { SetDataService } from 'src/app/infrastructure/state-services/set-data.service';
 
 @Component({
   selector: 'app-book-details',
@@ -23,11 +24,16 @@ export class BookDetailsComponent implements OnInit {
   ]
 
   constructor(
-    private storeDataService: StoreDataService
+    private storeDataService: StoreDataService,
+    private setDataService: SetDataService,
     ) { }
 
   ngOnInit() {
     this.initCurrentBook();
+  }
+
+  onHide() {
+    this.setDataService.setCurrentBook(null);
   }
 
   initCurrentBook(){
