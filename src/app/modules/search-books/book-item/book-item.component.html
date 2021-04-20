@@ -1,0 +1,18 @@
+<div class="item" (click)="onItemClicked(book)">
+  <div class="item-content">
+    <div class="fs-2">
+      {{ book.title }}
+    </div>
+    <div class="authors">
+      Author:
+      {{ book.authors | checkData }}
+    </div>
+  </div>
+
+  <i
+    class="fs-2 pi "
+    [ngClass]="isWishListItem ? 'pi pi-times' : 'pi-thumbs-up'"
+    (click)="onWishIconClicked($event, book)"
+    [ngStyle]="{ color: book.isWished ? 'green' : 'gray' }"
+  ></i>
+</div>

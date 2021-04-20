@@ -1,0 +1,36 @@
+.component {
+  background: #647e98;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #33373a;
+  padding: 5rem 5rem 5rem 5rem;
+
+  .search-bar {
+    text-align: center;
+    width: 100%;
+    .search-results {
+      background: #e4e8ec;
+      margin-top: 10px;
+    }
+  }
+}
+:host::ng-deep {
+  .p-paginator {
+    background-color: transparent;
+  }
+  .p-highlight {
+    background-color: white !important;
+  }
+}
+
+.button-wish-list {
+  background: cornsilk;
+  color: gray;
+  font-size: 3rem;
+}
+
+.result-container {
+  width: 100%;
+}

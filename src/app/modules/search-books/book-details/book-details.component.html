@@ -1,0 +1,15 @@
+<div *ngIf="selectedBook$ |async as currentBook">
+  <p-dialog [header]="currentBook.title"
+  [(visible)]="selectedBook">
+    <div class="field label">
+      {{currentBook.subtitle || 'no subtitle'}}
+    </div>
+    
+    <div class="field" *ngFor="let fieldData of fields">
+      <div class="label">{{fieldData.label}}:  </div>
+      <div class="data">{{ currentBook[fieldData.field] | checkData}} </div>
+    </div>
+
+  </p-dialog>
+
+</div>

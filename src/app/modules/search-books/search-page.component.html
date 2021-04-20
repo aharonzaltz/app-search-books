@@ -1,0 +1,31 @@
+<div class="component">
+  <button
+    [routerLink]="['/wish-list']"
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-tag"
+    label="Go to Wish-list"
+    class="p-button-outlined button-wish-list"
+  ></button>
+  <h1>Welcome {{ userName$ | async }}!</h1>
+
+  <div class="search-bar">
+    <div class="fs-2">Start to search</div>
+    <input #input class="input-text fs-2" pInputText placeholder="Enter text" />
+    <div class="search-results" *ngIf="totalItems$ | async as totalItems">
+      <p-paginator
+        [rows]="20"
+        [totalRecords]="totalItems"
+        (onPageChange)="onPageChange($event, input.value)"
+        class="p-paginator"
+      ></p-paginator>
+
+      <div class="result-container" *ngFor="let book of booksList$ | async; trackBy:trackByIdentity">
+        <app-book-item [book]="book"></app-book-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-book-details></app-book-details>

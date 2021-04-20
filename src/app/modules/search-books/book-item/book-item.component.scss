@@ -1,0 +1,26 @@
+.item {
+    border: 1px solid #8ea3bd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    background-color: beige;
+    text-align: start;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    .authors {
+      font-size: 1.3rem;
+      margin: 5px;
+    }
+  }
+  .item:hover {
+    background-color: rgb(178, 207, 240);
+  }
+
+  .pi-times {
+    margin-left: 20px;
+  }
+
+ 
