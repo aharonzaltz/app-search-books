@@ -9,7 +9,7 @@
       <div class="label">{{fieldData.label}}:  </div>
       <div class="data">{{ currentBook[fieldData.field] | checkData}} </div>
     </div>
-
+    <p-button *ngIf="currentBook.downloadUrl" label="Download Book" (onClick)="downloadBook(currentBook)"></p-button>
   </p-dialog>
 
 </div>

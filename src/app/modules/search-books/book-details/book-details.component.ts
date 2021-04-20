@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IBook } from 'src/app/interfaces/books';
 import { StoreDataService } from 'src/app/infrastructure/state-services/get-data.service';
 import { tap } from 'rxjs/operators';
 import { SetDataService } from 'src/app/infrastructure/state-services/set-data.service';
+import { BooksService } from 'src/app/services/books.service';
 
 @Component({
   selector: 'app-book-details',
   templateUrl: './book-details.component.html',
-  styleUrls: ['./book-details.component.scss']
+  styleUrls: ['./book-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookDetailsComponent implements OnInit {
 
@@ -26,6 +28,7 @@ export class BookDetailsComponent implements OnInit {
   constructor(
     private storeDataService: StoreDataService,
     private setDataService: SetDataService,
+    private booksService: BooksService,
     ) { }
 
   ngOnInit() {
@@ -40,5 +43,9 @@ export class BookDetailsComponent implements OnInit {
     this.selectedBook$ = this.storeDataService.getSelectedBook().pipe(
       tap(selectedBook => this.selectedBook = !!selectedBook)
     );
+  }
+
+  downloadBook(book: IBook) {
+    window.open(book.downloadUrl, "_blank");
   }
 }

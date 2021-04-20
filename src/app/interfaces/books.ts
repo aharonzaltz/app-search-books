@@ -8,6 +8,8 @@ export interface IBook {
   description: string;
   language: string;
   isWished:boolean;
+  imgSrc: string;
+  downloadUrl: string;
 }
 
 

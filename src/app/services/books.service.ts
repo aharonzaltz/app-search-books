@@ -9,6 +9,7 @@ import { SetDataService } from '../infrastructure/state-services/set-data.servic
   providedIn: 'root'
 })
 export class BooksService {
+  
   readonly baseUrl = "https://www.googleapis.com/books/v1/volumes?maxResults=20&q=";
   localStorageService: any
   constructor(
@@ -48,6 +49,8 @@ export class BooksService {
       description: volumeInfo.description,
       language: volumeInfo.language,
       isWished: false,
+      imgSrc: volumeInfo.imageLinks? volumeInfo.imageLinks.thumbnail: null,
+      downloadUrl: bookFromServe.accessInfo.pdf.downloadLink,
     }
   }
 

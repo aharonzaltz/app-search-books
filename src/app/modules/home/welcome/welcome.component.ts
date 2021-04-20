@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RouteUrls } from 'src/app/config/config-data';
@@ -8,6 +8,7 @@ import { SetDataService } from 'src/app/infrastructure/state-services/set-data.s
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WelcomeScreenComponent implements OnInit {
   loginForm: FormGroup;

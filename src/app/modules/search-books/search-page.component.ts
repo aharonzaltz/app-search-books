@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { BooksService } from '../../services/books.service';
 import { debounceTime, map, skipWhile, switchMap } from 'rxjs/operators'
 import { IPaginationEvent } from 'src/app/interfaces/pagination-event';
@@ -9,7 +9,8 @@ import { StoreDataService } from 'src/app/infrastructure/state-services/get-data
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
-  styleUrls: ['./search-page.component.scss']
+  styleUrls: ['./search-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchPageComponent implements OnInit {
   userName$: Observable<string>;

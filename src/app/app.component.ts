@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { distinctUntilChanged, map, tap } from 'rxjs/operators';
 import { StoreDataService } from './infrastructure/state-services/get-data.service';
@@ -7,11 +7,12 @@ import { StoreDataService } from './infrastructure/state-services/get-data.servi
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   showLoadingMask$: Observable<boolean>;
-  showLoadingMask: boolean = true;
+  showLoadingMask = true;
 
   constructor(private storeDataService: StoreDataService) {}
   ngOnInit() {

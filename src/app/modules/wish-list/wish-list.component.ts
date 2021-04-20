@@ -1,12 +1,13 @@
 import { IBook } from '../../interfaces/books';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { StoreDataService } from 'src/app/infrastructure/state-services/get-data.service';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-wish-list',
   templateUrl: './wish-list.component.html',
-  styleUrls: ['./wish-list.component.scss']
+  styleUrls: ['./wish-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WishListComponent implements OnInit {
   userName$: Observable<string>;
