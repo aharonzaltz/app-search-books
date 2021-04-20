@@ -1,0 +1,28 @@
+.welcome-container {
+    background: linear-gradient(to top, gray, blue, yellow);
+    height: 100%;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.header-title {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    font-size: 5rem;
+}
+
+.label {
+    font-size: 2.2rem;
+}
+
+.row {
+    padding: 8px;
+}
+
+:host ::ng-deep {
+    .p-button {
+        width: 10%;
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,44 @@
+.component {
+  background: rgb(228, 232, 236);
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(84, 127, 177);
+  padding: 5rem 5rem 5rem 5rem;
+
+  .search-link {
+    color: rgb(6, 128, 243);
+    align-self: start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    .search-link-icon {
+      font-size: 4rem;
+    }
+    // .search-link-text {
+    //   font-size: 1.1rem;
+    //   width: 5.8rem;
+    //   margin-left: 10px;
+    //   text-align: start;
+    // }
+  }
+
+  .message{
+    font-size: 1.5rem;
+    margin-top: 10rem;
+    text-align: center;
+
+  }
+  .wish-list {
+    width: 100%;
+    text-align: start;
+  }
+}
+
+.result-container {
+  width: 100%;
+}

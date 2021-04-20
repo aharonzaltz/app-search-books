@@ -1,0 +1,19 @@
+.wrapper {
+    height: 100vh;
+}
+
+:host ::ng-deep {
+    .p-dialog-resizable {
+        box-shadow: none;
+        width: 50%;
+        height: 50%;
+    }
+    .p-dialog-content {
+        background: transparent;
+        overflow: hidden;
+    }
+    .pi-spinner {
+        font-size: 22rem;
+        margin-left: 36%;
+    }
+}

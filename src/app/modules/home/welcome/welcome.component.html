@@ -1,0 +1,40 @@
+<div class="welcome-container">
+  <div class="row">
+    <div class="header-title">
+      <div>Search books app</div>
+    </div>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-10 p-offset-1">
+      <div class="label row">please insert your username</div>
+      <div class="row">
+        <form [formGroup]="loginForm">
+          <input class="input-text fs-2"
+            aria-describedby="username"
+            type="text"
+            pInputText
+            formControlName="userName"
+          />
+          <div
+            class="error-message"
+            *ngIf="
+              loginForm.controls.userName?.errors &&
+              loginForm.controls.userName?.touched
+            "
+            id="username"
+            class="p-error"
+            >Username is requierd.</div
+          >
+        </form>
+      </div>
+      <div class="row">
+        <p-button
+          (onClick)="onSubmit()"
+          [disabled]="!loginForm.controls.userName?.valid"
+          label="Find your Books!"
+        ></p-button>
+      </div>
+    </div>
+  </div>
+</div>

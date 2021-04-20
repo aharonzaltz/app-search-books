@@ -1,0 +1,30 @@
+<div class="component">
+  <div class="search-link" [routerLink]="['/search-page']">
+    <i class="search-link-icon pi pi-search"></i>
+    <div class="fs-2">
+      Go to search books
+      <i class="pi pi-arrow-right"></i>
+    </div>
+  </div>
+  <h1>
+    Hi {{ userName$ | async }}, Here is your books WishList
+  </h1>
+
+  <div *ngIf="wishList$ | async as wishList" class="wish-list">
+    <ng-container *ngIf="wishList.length; else noData">
+    <div
+      class="result-container"
+      *ngFor="let book of wishList"
+    >
+      <app-book-item [book]="book" [isWishListItem]="true"></app-book-item>
+    </div>
+
+  </ng-container>
+    <ng-template #noData>
+      <div class="message">
+        Your wish list is empty. You can add items to your list from the
+        <a [routerLink]="['/search-page']">Search Page</a>
+      </div>
+    </ng-template>
+  </div>
+</div>

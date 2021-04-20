@@ -1,0 +1,36 @@
+html, body{
+  font-family: "arial", sans-serif;
+  font-size: 10px;
+  @media(max-width: 700px){
+    font-size: 8px;
+  }
+  @media(max-width: 500px){
+    font-size: 6px;
+  }
+  @media(max-width: 300px){
+    font-size: 4px;
+  }
+  margin: 0;
+
+}
+input{
+  border: none;
+  outline: none;
+}
+
+.input-text {
+  width: 50rem !important;
+  border-bottom: 1px solid rgb(84, 127, 177) !important;
+  background: rgb(228, 232, 236) !important;
+
+  margin-top: 3rem !important;
+  padding: 8px !important;
+  color: rgb(84, 127, 177) !important;
+}
+.input-text::placeholder {
+  color: rgb(84, 127, 177);
+}
+
+.fs-2 {
+  font-size: 2rem !important;
+}
